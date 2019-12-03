@@ -1,0 +1,47 @@
+---
+title: "Mon rapport sur les iris"
+author: "Aperture Science"
+date: "03/12/2019"
+output:
+  pdf_document:
+    toc: true
+    number_sections: true
+    #toc_float: true # table des contenus sur le côté
+bibliography: /media/boulot/Commun/Documents/Etudes/Thèse/Rédactions/Thèse/These.bib
+header-includes: \usepackage{siunitx}
+    
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Préliminaire
+
+Commençons par le test d'une formule 
+$$
+\oint\sum_{i=1,n}\Omega_{r}^{2\exp(\cos(3x))}\times 4
+$$
+Un article très intéressant, et qui n'a rien à voir avec le sujet : [@deRossi2016].
+  
+La circonférence de mon iris, pour un rayon $R=\SI{2}{\centi\metre}$, est de$2\pi R=$ `r 2*pi*2` $\SI{}{\centi\metre}$
+
+## Calculs
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r iris_treatment}
+iris.setosa <- iris[iris$Species=="setosa",]
+fit = lm(Sepal.Width~Sepal.Length,data=iris.setosa)
+```
+## Une figure magnifique
+
+```{r}
+plot(iris.setosa$Sepal.Length,iris.setosa$Sepal.Width)
+lines(iris.setosa$Sepal.Length,fitted(fit))
+```
+
+# References
+
+
